@@ -38,6 +38,26 @@ Github: Git을 기반으로한웹 호스팅 서비스. Git 저장소를 온라�
   - git commit --amend: 마지막 커밋을 수정.
   - 커밋 메세지는 과거시제(~했다)보다는 현재시제(~하다)을 사용하고 명령형으로 쓰는게 오피셜.
 
+### git push
+
+- git push: 원격 저장소에 커밋을 업로드.
+  - git push origin main: 원격 저장소의 main 브랜치에 커밋을 업로드.
+  - git push origin "local-branch":"remote-branch": 원격 저장소의 remote-branch에 local-branch의 커밋을 업로드.
+  - git push -u "remote" "branch": 원격 저장소와 브랜치를 연결.
+
+### git fetch
+
+- git fetch: 원격 저장소의 커밋을 가져옴. (로컬 저장소에 반영 X) => 원격 저장소의 변경 사항을 검토하고 병합할 준비가 되면 `git merge` 또는 `git pull`로 적용.
+  - git fetch --all: 원격 저장소의 모든 브랜치의 커밋을 가져옴.
+  - git fetch "remote": 원격 저장소의 커밋을 가져옴.
+  - git fetch "remote" "branch": 원격 저장소의 특정 브랜치의 커밋을 가져옴.
+
+### git pull
+
+- git pull: 원격 저장소의 커밋을 가져와 로컬 저장소에 반영. (git fetch + git merge)
+  - git pull "remote" "branch": 원격 저장소의 특정 브랜치의 커밋을 가져와 로컬 저장소에 반영.
+  - git pull --rebase: 현재 작업 중인 브랜치와 연결된 원격 브랜치에서 변경 사항을 가져오고 리베이스하기.
+
 ### git log
 
 - git log: 커밋 로그 확인
@@ -48,6 +68,7 @@ Github: Git을 기반으로한웹 호스팅 서비스. Git 저장소를 온라�
 - git branch: 브랜치 목록 확인.
   - git branch "name": 브랜치 생성
   - git branch -a: 로컬 브랜치와 원격 브랜치 목록 확인.
+  - git branch -r: 원격 브랜치 목록 확인.
   - git branch -d "name": 브랜치 삭제. -D는 강제 삭제
   - git branch -m "name": 현재 브랜치 이름 변경.
     - git branch -m "old_name" "new_name": 다른 브랜치 or 현 브랜치에서 이름 변경 가능.
@@ -56,9 +77,11 @@ Github: Git을 기반으로한웹 호스팅 서비스. Git 저장소를 온라�
 
 - git switch "name": 브랜치 이동
   - git switch -c "name": 브랜치 생성 및 이동
+  - git switch -: 이전 브랜치로 이동
 - git checkout "name": 브랜치 이동
   - git checkout -b "name": 브랜치 생성 및 이동
   - git checkout "commit": 커밋으로 이동
+  - git checkout --track "remote/branch": 원격 브랜치를 추적하는 로컬 브랜치 생성 및 이동
 
 switch는 git 2.23에 새로 나왔는데, checkout과 간단히 비교하자면 git switch는 브랜치 간 전환에 보다 사용자 친화적이고 집중된 명령. 브랜치를 전환하거나 새 브랜치를 만들고 전환하는 것뿐.  
 checkout은 브랜치를 전환하는 것 외에도 특정 커밋으로 전환하거나 작업 디렉토리의 변경 내용을 덮어쓰는 데에도 사용 가능.
